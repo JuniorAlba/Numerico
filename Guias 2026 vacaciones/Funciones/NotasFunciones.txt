@@ -1,0 +1,7 @@
+Orden según unidad (< a >)
+Métodos directos SEAL
+Métodos iterativos SEAL
+EcNoLin
+Interpol Y AproxDeFunc
+DifInt
+PVI

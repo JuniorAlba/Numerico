@@ -1,3 +1,4 @@
+﻿addpath('..');
 A = [80 -50 -30 0;
     ; -50 100 -10 -25
     ; -30 -10 65 -20
@@ -17,5 +18,5 @@ endfor
 A
 b
 
-x = sust_atras_vec(A,b);
+x = sust_atras(A,b);
 Aor*x
