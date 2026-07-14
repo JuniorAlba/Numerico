@@ -1,22 +1,12 @@
-﻿addpath('..');
+addpath('..');
 A = [80 -50 -30 0;
-    ; -50 100 -10 -25
-    ; -30 -10 65 -20
-    ; 0 -25 -20 100];
-b = [-120 ; 0; 0; 0 ];
-Aor = A;
-bor=b;
+    -50 100 -10 -25;
+    -30 -10 65 -20;
+    0 -25 -20 100];
+b = [-120; 0; 0; 0];
 
-printf("gauss");
-for k=1:1:(length(b)-1)
-    for i =k:1:length(b)-1
-        s=A(k,:).*(A(i+1,k)/A(k,k));
-        b(i+1) = b(i+1) - b(k).*(A(i+1,k)/A(k,k));
-        A(i+1,:)=A(i+1,:)-s;
-    endfor
-endfor
-A
-b
+disp("Resolviendo usando eliminacion de Gauss");
+x = gauss1(A, b);
 
-x = sust_atras(A,b);
-Aor*x
+disp("Las corrientes i1, i2, i3 e i4 son:");
+disp(x);

@@ -4,10 +4,7 @@ A = [16.87 0.1650 0.2019 0.3170 0.2340 0.1820 0.1100; 0.0 27.70 0.8620 0.0620 0.
 b = [ 17.1; 65.1; 186.0; 82.7; 84.2; 63.7;  119.7];
 n = length(b);
 
-[Ap, r] = doolittle_p(A);
-PA = Ap(r, :);
-L = eye(n) + tril(PA, -1);
-U = triu(PA);
+[L, U, ~, ~, r] = doolittle_p(A);
 
 y = sust_adelante(L, b(r));
 x = sust_atras(U, y);
@@ -20,10 +17,7 @@ A = [80 -50 -30 0; -50 100 -10 -25; -30 -10 65 -20; 0 -25 -20 100];
 b = [-120;0;0;0];
 n = length(b);
 
-[Ap, r] = doolittle_p(A);
-PA = Ap(r, :);
-L = eye(n) + tril(PA, -1);
-U = triu(PA);
+[L, U, ~, ~, r] = doolittle_p(A);
 
 y = sust_adelante(L, b(r));
 x = sust_atras(U, y);
@@ -49,10 +43,7 @@ b(1)=0;
 b(N)=0;
 n = length(b);
 
-[Ap, r] = doolittle_p(A);
-PA = Ap(r, :);
-L = eye(n) + tril(PA, -1);
-U = triu(PA);
+[L, U, ~, ~, r] = doolittle_p(A);
 
 y = sust_adelante(L, b(r));
 x = sust_atras(U, y);

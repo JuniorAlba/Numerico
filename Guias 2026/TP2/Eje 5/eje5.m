@@ -1,4 +1,4 @@
-﻿addpath('..');
+addpath('..');
 A = [16.87 0.1650 0.2019 0.3170 0.2340 0.1820 0.1100
     ; 0.0 27.70 0.8620 0.0620 0.0730 0.1310 0.1200
     ; 0.0 0.0 22.35 13.05 4.420 6.001 3.043
@@ -8,13 +8,12 @@ A = [16.87 0.1650 0.2019 0.3170 0.2340 0.1820 0.1100
     ; 0.0 0.0 0.0 0.0 0.0 0.0 4.670];
 b = [17.1; 65.1; 186; 82.7; 84.2; 63.7; 119.7];
 
-s = (A(5,:)/A(5,5))*(A(6,5));
-A(6,:)= A(6,:)-s;
-A
-b
+% Resolvemos usando eliminacion de Gauss
+x = gauss1(A, b);
 
-x=sust_atras(A,b);
-A*x
-x
+disp('Presiones parciales:');
+disp(x);
 
-total = sum(x)
+total = sum(x);
+disp('Presion total:');
+disp(total);

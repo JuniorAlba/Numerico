@@ -2,15 +2,9 @@ addpath('..');
 A = [1 1+0.5e-15 3; 2 2 20; 3 6 4];
 n = length(A);
 
-A_nop = doolittle(A);
-L1 = eye(n) + tril(A_nop, -1);
-U1 = triu(A_nop);
+[L1, U1] = doolittle(A);
 
-[A_p, r] = doolittle_p(A);
-PA = A_p(r, :);
-L2 = eye(n) + tril(PA, -1);
-U2 = triu(PA);
-P = eye(n)(r, :);
+[L2, U2, ~, P, r] = doolittle_p(A);
 
 disp("A-L1*U1");
 disp(A-L1*U1);

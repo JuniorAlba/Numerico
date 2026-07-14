@@ -18,9 +18,7 @@ end
 
 xmax = [];
 n = length(A);
-A_nop = doolittle(A);
-L = eye(n) + tril(A_nop, -1);
-U = triu(A_nop);
+[L, U] = doolittle(A);
 
 for i=1:1:10
     y = sust_adelante(L, b(:,i));
