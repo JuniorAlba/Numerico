@@ -1,3 +1,15 @@
+% Metodo iterativo de Relajacion Sucesiva (SOR) para resolver Ax = b
+% Recibe: 
+%   A: matriz de coeficientes
+%   b: vector de terminos independientes
+%   x0: estimacion inicial
+%   maxit: numero maximo de iteraciones
+%   tol: tolerancia para el criterio de parada (error relativo)
+%   w: parametro de relajacion
+% Devuelve: 
+%   x: vector solucion
+%   it: numero de iteraciones realizadas
+%   r_h: historial de errores relativos en cada iteracion
 function [x,it,r_h] = SOR(A,b,x0,maxit,tol,w)
   n=length(b);it=0;r_h=[];x=x0;
   while (it<maxit)

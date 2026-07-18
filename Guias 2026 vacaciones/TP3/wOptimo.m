@@ -30,7 +30,7 @@ function [w] = wOptimo(A, b, x0, tol, maxit)
     opcion_bruteforce_max_w = 1.99; % Límite superior (no probar 2)
 
     % Opciones de Gráficos (solo para fuerza bruta)
-    graficar_convergencia = true;  % true: grafica It vs. w
+    graficar_convergencia = false;  % true: grafica It vs. w
     opcion_grafico_escala = 'normal';% 'log' o 'normal'
                                      % (Se recomienda 'normal' para It vs w)
     opcion_grafico_estilo = '-xb'; % Estilo de línea
@@ -84,7 +84,7 @@ function [w] = wOptimo(A, b, x0, tol, maxit)
 
     for j = 1:length(w_range)
         % (Ver NOTA IMPORTANTE en el Ejemplo 2)
-        [~, it_j, r_h] = sor(A, b, x0, maxit, tol, w_range(j));
+        [~, it_j, r_h] = SOR(A, b, x0, maxit, tol, w_range(j));
         it_hist(j) = it_j;
 
         if (opcion_verbose == 2)

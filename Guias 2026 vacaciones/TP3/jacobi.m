@@ -1,3 +1,14 @@
+% Metodo iterativo de Jacobi para resolver sistemas lineales Ax = b
+% Recibe: 
+%   A: matriz de coeficientes
+%   b: vector de terminos independientes
+%   x0: estimacion inicial
+%   maxit: numero maximo de iteraciones
+%   tol: tolerancia para el criterio de parada (error relativo)
+% Devuelve: 
+%   x: vector solucion
+%   it: numero de iteraciones realizadas
+%   r_h: historial de errores relativos en cada iteracion
 function [x,it,r_h]=jacobi(A,b,x0,maxit,tol)
   n=length(b);it=0;r_h=[];x=x0;
   while (it<maxit)

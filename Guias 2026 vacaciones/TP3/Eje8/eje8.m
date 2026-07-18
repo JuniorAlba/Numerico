@@ -1,6 +1,8 @@
 % --- 1. CONFIGURACIÓN GRÁFICA ---
+addpath('..');
+addpath('../../TP2');
 % Si falla qt, usamos gnuplot
-graphics_toolkit("gnuplot");
+% graphics_toolkit("gnuplot");
 Nh=10;          %cantidad de subintervalos
 P = 1.0326e+4; %carga por unidad de long
 w = 0.07;       %ancho de seccion rectangular
@@ -35,15 +37,15 @@ b(Nh:Nh+1)=0;
 tol = 1e-8;
 x0 = zeros(Nh+1,1);
 maxit = 10000;
-figure(1);
-hold on;
-grid on;
-% --------------- JACOBBI ---------------%
+% figure(1);
+% hold on;
+% grid on;
+% --------------- JACOBI ---------------%
 tic;
-[x, it, r_h] =jacobbi(A,b,x0,maxit,tol);
+[x, it, r_h] =jacobi(A,b,x0,maxit,tol);
 it
-toc_jacobbi = toc
-semilogy(1:1:it,r_h,'-g');
+toc_jacobi = toc
+% semilogy(1:1:it,r_h,'-g');
 
 
 % --------------- GAUSS SEIDEL ---------------%
@@ -52,24 +54,24 @@ tic;
 it
 toc_GS = toc
 
-semilogy(1:1:it,r_h,'-b');
+% semilogy(1:1:it,r_h,'-b');
 
 % --------------- SOR ---------------%
-%[w] = wOptimoExperimental(A,b,x0,maxit,tol)
-w = 1.6273
+% w = wOptimo(A,b,x0,tol,maxit); % Comentado porque agota los 10000 intentos de SOR 40 veces
+w = 1.6273;
 
 tic;
-[x, it, r_h] =SOR(A,b,x0,maxit,tol,1);
+[x, it, r_h] =SOR(A,b,x0,maxit,tol,w);
 it
 toc_SOR = toc
 
-semilogy(1:1:it,r_h,'-r');
+% semilogy(1:1:it,r_h,'-r');
 
 
 % --------------- GAUSS ---------------%
 
 tic;
-[_,x]=gauss1(A,b);
+x = gauss1(A,b);
 toc_gauss = toc
 
 %{
