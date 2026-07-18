@@ -1,6 +1,6 @@
 % Resuelve la ecuación no lineal f(x)=0 usando el método de bisección.
 % Recibe: f (función), xmin y xmax (extremos del intervalo inicial), kmax (iteraciones máximas), tol (tolerancia).
-% Devuelve: x (aproximación de la raíz), h (vector de errores relativos), it (cantidad de iteraciones).
+% Devuelve: x (aproximación de la raíz), h (vector de errores relativos), it (cantidad de iteraciones)
 function [x, h, it] = biseccion(f, xmin, xmax, kmax, tol)
   fa = f(xmin);
   fb = f(xmax);
