@@ -5,6 +5,8 @@ function [x, h, it] = puntofijo(g, x0, kmax, tol)
   for it=1:kmax
     x = g(x0);
     h(it) = abs(x-x0);
+    %h(it) = abs(x-x0)/abs(x);
+
     if h(it)<tol
       break;
     endif
