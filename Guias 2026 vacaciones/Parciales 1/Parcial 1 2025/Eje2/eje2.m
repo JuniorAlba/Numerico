@@ -1,6 +1,6 @@
-addpath('../../TP4');
-addpath('../../TP3');
-addpath('../../TP2');
+addpath('../../../TP4');
+addpath('../../../TP3');
+addpath('../../../TP2');
 format long;
 A = [2 2 -1 0 2;
     -2 2 -1 0 2;
@@ -27,3 +27,5 @@ it
 
 %ITEM C
 norm(x-x_g,inf)/norm(x_g,inf)
+
+%7.402300872287142e-05

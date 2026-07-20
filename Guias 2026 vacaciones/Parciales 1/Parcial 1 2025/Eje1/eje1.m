@@ -1,6 +1,6 @@
-addpath('../../TP4');
-addpath('../../TP3');
-addpath('../../TP2');
+addpath('../../../TP4');
+addpath('../../../TP3');
+addpath('../../../TP2');
 format long;
 f = @(x) log(x.^2+1) - exp(x/2).*cos(pi*x)-1.106;
 
@@ -29,6 +29,9 @@ itmax = 1000;
 it
 x
 
+%resultados (CON ERROR ABSOLUTO)
+%x=-0.8378265
+%it = 24
 
 %ITEM C
 %por ser una raiz simple el orden de convergencia es cuadratico para newton 
@@ -42,12 +45,15 @@ itmax = 100;
 [x1,h1,it1]=newton(f,df,p1,itmax,tol);
 [x2,h2,it2]=newton(f,df,p2,itmax,tol);
 [x3,h3,it3]=newton(f,df,p3,itmax,tol);
-it1
 x1
-it2
 x2
-it3
 x3
+
+%resultados (CON ERROR relativo)
+%x1 = 0.6746660955
+%x2 = -0.8378265061
+%x3 = 6.466670670
+
 
 %ITEM D
 %la derivada en x=1 es mayor a 1 por lo que no converge
@@ -56,7 +62,8 @@ df(1)
 %entonces transformamos el problema en la busqueda de una raiz
 f2 = @(x) f(x) - x;
 df2 = @(x) df(x) - 1;
-[x,h,it] = newton(f2,df2,1,itmax,tol);
+[x,h,it] = newton(f2,df2,1,itmax,5e-7);
 x
-it
-h(end)
+
+%resultados (CON ERROR RELATIVO)
+%x = 0.8679355

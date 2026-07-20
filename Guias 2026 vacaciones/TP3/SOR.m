@@ -17,7 +17,9 @@ function [x,it,r_h] = SOR(A,b,x0,maxit,tol,w)
     for i=1:n
       x(i) = w*(b(i)-A(i,1:i-1)*x(1:i-1) - A(i,i+1:n)*x0(i+1:n))/A(i,i) + (1-w)*x0(i);
     endfor
-    err=norm(x-x0,inf)/norm(x,inf);
+    %err=norm(x-x0,inf)/norm(x,inf); %error relativo
+    err=norm(x-x0,inf); %error absoluto
+    %err = norm(A*x-b,inf); %residuo
     r_h=[r_h;err];
     if(err<tol)
       break;

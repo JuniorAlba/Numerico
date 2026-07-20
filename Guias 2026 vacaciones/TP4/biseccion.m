@@ -13,7 +13,10 @@ function [x, h, it] = biseccion(f, xmin, xmax, kmax, tol)
   for it=1:kmax
     x = xmin + (xmax-xmin)/2;
     fx = f(x);
-    h(it) = abs(x-Pold)/abs(x);
+    #h(it) = abs(x-Pold)/abs(x); #ERROR RELATIVO
+    h(it) = abs(x-Pold); #ERROR ABSOLUTO
+    #h(it) = abs(f(x)); #RESIDUO
+    
     if h(it)<tol
       break;
     endif
