@@ -5,9 +5,9 @@ function [x, h, it] = newton(f, df, x0, kmax, tol)
   x = x0;
   for it=1:kmax
     x = x0 - f(x0)/df(x0);
-    h(it) = abs(x-x0)/abs(x);
-    #h(it) = abs(p-x0);
-    #h(it) = f(p);
+    %h(it) = abs(x-x0)/abs(x);
+    h(it) = abs(x-x0);
+    #h(it) = f(x);
     if h(it) < tol
       break;
     endif
