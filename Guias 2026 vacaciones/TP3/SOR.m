@@ -25,6 +25,6 @@ function [x,it,r_h] = SOR(A,b,x0,maxit,tol,w)
     x0=x;
   endwhile
   if it==maxit
-    disp('Se ha llegado al Nro maximo de iteraciones')
+    % disp('Se ha llegado al Nro maximo de iteraciones')
   endif
 endfunction 
