@@ -42,14 +42,24 @@ it
 [y,it,h] = gauss_seidel(A,f,zeros(length(x),1),1000,tol);
 it
 %resultados (error absoluto)
-%jacobi: 69
+%jacobi: 70
 %gauss_seidel: 37
 
 
 %ITEM C
-w = wOptimo2(A,f,zeros(length(x),1),tol,100,3)
+w = wOptimoMinRadEspect(A,3);
+w
 [x,it,h] = SOR(A,f,zeros(length(x),1),1000,tol,w);
 it
 %resultados (error absoluto)
-%w: 1.371
-%it: 15
+%w: 1.367
+%it: 16
+
+%ITEM D
+u = gauss1(A,f);
+u(1)
+u(end)
+
+%resultados
+%u(0) = 3.811400
+%u(1) = 5.077458
