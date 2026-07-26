@@ -1,5 +1,5 @@
-function [x,y,it]=dif_fin_rob(f,inter,ycd,rob,L)
-% function [x,y,it]=dif_fin_rob(f,[a b],alpha,[A B C],L)
+function [x,y]=dif_fin_rob(f,inter,ycd,rob,L)
+% function [x,y]=dif_fin_rob(f,[a b],alpha,[A B C],L)
 %
 % OBJETIVO:
 % Resuelve un problema de valores de contorno lineal 
@@ -18,7 +18,6 @@ function [x,y,it]=dif_fin_rob(f,inter,ycd,rob,L)
 % SALIDA:
 % x: vector con los puntos del dominio discretizado.
 % y: vector con la solución aproximada en cada punto de x.
-% it: devuelve 0 (sin iteraciones).
 
 p=@(x) f(x)(:,1);
 q=@(x) f(x)(:,2);
@@ -42,7 +41,6 @@ b(end+1)=2*h*rob(3);
 
 # resolucion del sistema
 ys=A\b;
-it=0;
 
 # solucion con las condiciones de contorno
 y=[ycd;ys(1:end-1)];

@@ -1,5 +1,5 @@
-function [x,y,it]=dif_fin_dir(f,inter,yc,L)
-% function [x,y,it]=dif_fin_dir(f,[a b],[alpha,beta],L)
+function [x,y]=dif_fin_dir(f,inter,yc,L)
+% function [x,y]=dif_fin_dir(f,[a b],[alpha,beta],L)
 %
 % OBJETIVO:
 % Resuelve un problema de valores de contorno lineal 
@@ -16,7 +16,6 @@ function [x,y,it]=dif_fin_dir(f,inter,yc,L)
 % SALIDA:
 % x: vector columna con los puntos del dominio discretizado.
 % y: vector columna con la solución aproximada en cada punto de x.
-% it: devuelve 0 (en este método directo no hay iteraciones, se mantiene por compatibilidad).
 
 p=@(x) f(x)(:,1);
 q=@(x) f(x)(:,2);
