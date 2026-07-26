@@ -71,17 +71,13 @@ Pv = 1/2.*I.^2.*dL(x);
 plot(x,Pv)
 idx1 = find(x == 2);
 idx2 = find(x == 3);
-max_ant = -inf;
-for i=1:length(Pv)
-    if(i>=idx1 && i<=idx2)
-        if(Pv(i) > max_ant)
-            max_ant = Pv(i);
-            idx = i;
-        endif
-    endif
-endfor
-valor = max_ant
+[valor, pos] = max(Pv(idx1:idx2));
+idx = idx1 + pos - 1;  % Índice global en el vector original
+valor
 x(idx)
+%RESULTADO FINAL ITEM C:
+%Pv = 0.25
+%t = 2.52
 
 
 
