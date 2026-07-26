@@ -1,3 +1,4 @@
+addpath('..');
 %p(x) = 0;
 %q(x) = (1/k0)*Cr(x);
 %r(x) = -(1/k0)*fuente(x)

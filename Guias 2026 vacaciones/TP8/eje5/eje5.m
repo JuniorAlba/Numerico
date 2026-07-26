@@ -1,3 +1,4 @@
+addpath('..');
 k0 =1;
 fuente=@(x) 20*sin(5*(x-1));
 p = @(x) 0.*x;
@@ -35,6 +36,8 @@ while(h>hmin && error_metodo(end) >=0.5e-2)
 endwhile
 h
 error_metodo(end)
+fprintf('Temperatura en el extremo derecho (x=3): %.2f\n', y(end));
+
 
 [temp_max, indice] = max(y);
 posicion_max = x(indice);

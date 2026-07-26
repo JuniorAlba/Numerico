@@ -1,3 +1,4 @@
+addpath('..');
 p = @(x) -2./x;
 q = @(x) 2./(x.^2);
 r = @(x) sin(log(x))./(x.^2);
@@ -21,12 +22,12 @@ y_exacta = @(x) c1.*x + c2./(x.^2) - (3/10).*sin(log(x)) - (1/10).*cos(log(x));
 h = 0.1;
 L = (inter(2) -inter(1))/(h);
 [x,y] = disparo_lineal(f,inter,yc,L);
-error1 = max(abs(y_exacta(x)-y));
+error1 = norm(y_exacta(x)-y, inf);
 %se usa error absoluto y no relativo pq si la solucion pasa por y=0 entonces nuestro metodo falla
 h = 0.01;
 L = (inter(2) -inter(1))/(h);
 [x,y] = disparo_lineal(f,inter,yc,L);
-error2 = max(abs(y_exacta(x)-y));
+error2 = norm(y_exacta(x)-y, inf);
 
 error1/error2
 
