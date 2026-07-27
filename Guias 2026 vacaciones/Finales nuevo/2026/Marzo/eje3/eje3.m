@@ -64,16 +64,16 @@ plot(t,r(:,1))
 % ITEM D -------------------
 L_D = 1000;
 [t, r] = rk4(f, [0 10], r0, L_D);
-dist_ant = trapz(t, sqrt(r(:,3).^2 + r(:,4).^2));
+dist_ant = trapcomp(t, sqrt(r(:,3).^2 + r(:,4).^2));
 error_D = inf;
 while (error_D >= 1e-3)
     L_D = 2 * L_D;
     [t, r] = rk4(f, [0 10], r0, L_D);
-    dist_new = trapz(t, sqrt(r(:,3).^2 + r(:,4).^2));
+    dist = trapcomp(t, sqrt(r(:,3).^2 + r(:,4).^2));
     
-    error_D = abs(dist_new - dist_ant);
-    dist_ant = dist_new;
+    error_D = abs(dist - dist_ant);
+    dist_ant = dist;
 endwhile
-dist_ant
+dist
 error_D
 % resultado: dist_ant = 18.361 UA
