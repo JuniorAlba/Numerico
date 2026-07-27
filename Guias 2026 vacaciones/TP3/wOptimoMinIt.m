@@ -10,7 +10,7 @@
 %   decimales: cantidad de decimales correctos deseados para w (ej: 3)
 % Salidas:
 %   w_opt : valor de w que minimizo las iteraciones
-function [w_opt] = wOptimo2(A, b, x0, tol, maxit, decimales)
+function [w_opt] = wOptimoMinIt(A, b, x0, tol, maxit, decimales)
 
   % Calculamos el paso a partir de los decimales (ej: 3 -> 0.001)
   paso = 10^(-decimales);
