@@ -37,18 +37,12 @@ abs(tc-tc_ant)
 L=100;
 inter = [0 30];
 [t,y] = rk4(f,inter,x0,L);
-aceleracion = f(30,y(end,:))(2);
-error_B = [inf];
-while(error_B(end) >= 5e-6)
-    aceleracion_ant = aceleracion;
-    L = 2*L;
-    [t,y] = rk4(f,inter,x0,L);
-    aceleracion = f(30,y(end,:))(2);
-    error_B = [error_B abs(aceleracion-aceleracion_ant)/abs(aceleracion)];
-endwhile
-aceleracion
-% Resultado exacto: 0.172985
+aceleracion_ant = f(30,y(end,:))(2);
 
+[t,y] = rk4(f,inter,x0,L*2);
+aceleracion = f(30,y(end,:))(2);
+error_B = abs(aceleracion-aceleracion_ant)/abs(aceleracion) < 5e-6
+aceleracion
 
 %ITEM C ------------------
 plot(t,y(:,2))
@@ -58,18 +52,15 @@ plot(t,y(:,2))
 L=100;
 [t,y] = rk4(f,inter,x0,L);
 [_,idx] = max(abs(y(:,2)));
+max_t_v_ant = [t(idx) y(idx,2)];
+
+[t,y] = rk4(f,inter,x0,L*2);
+[_,idx]  = max(abs(y(:,2)));
 max_t_v = [t(idx) y(idx,2)];
-error_B = [inf];
-while(error_B(end) >= 5e-4)
-    max_t_v_ant = max_t_v;
-    L = 2*L;
-    [t,y] = rk4(f,inter,x0,L);
-    [_,idx]  = max(abs(y(:,2)));
-    max_t_v = [t(idx) y(idx,2)];
-    error_B = [error_B norm(max_t_v-max_t_v_ant,inf)/norm(max_t_v,inf)];
-endwhile
+
+error_B = norm(max_t_v-max_t_v_ant,inf)/norm(max_t_v,inf)<5e-4;
 max_t_v
 
 %resultados:
-%t=16.63
+%t=16.65
 %v=59.27
