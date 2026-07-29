@@ -34,7 +34,7 @@ abs(tc-tc_ant)
 %tc = 96.15
 
 %ITEM B -------------------
-L=100;
+L=10000;
 inter = [0 30];
 [t,y] = rk4(f,inter,x0,L);
 aceleracion_ant = f(30,y(end,:))(2);
@@ -49,7 +49,7 @@ plot(t,y(:,2))
 %Si ploteamos la velocidad en el item B, podemos ver es creciente
 %en magnitud hasta que empieza a decaer al rededor de los 16s
 %por lo que el intervalo de integracion actual es mas que suficiente
-L=100;
+L=10000;
 [t,y] = rk4(f,inter,x0,L);
 [_,idx] = max(abs(y(:,2)));
 max_t_v_ant = [t(idx) y(idx,2)];
@@ -62,5 +62,5 @@ error_B = norm(max_t_v-max_t_v_ant,inf)/norm(max_t_v,inf)<5e-4;
 max_t_v
 
 %resultados:
-%t=16.65
+%t=16.63
 %v=59.27

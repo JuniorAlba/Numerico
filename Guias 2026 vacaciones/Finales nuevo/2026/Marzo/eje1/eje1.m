@@ -38,17 +38,24 @@ pasos = 1000;
 
 %ITEM B ---------------
 %hay que estimar la derivada de y con diferencias finitas
-h = (inter(2)-inter(1))/pasos;
-dy = zeros(size(x));
-dy(2:end-1) = (y(3:end)-y(1:end-2))/(2*h);
-dy(1) = (-3*y(1)+4*y(2)-y(3))/(2*h);
-dy(end) = (3*y(end)-4*y(end-1)+y(end-2))/(2*h);
+pasos = 2000;
+[x y] = dif_fin_rob(f,inter,ycd,rob,pasos);
+dy = aproximar_derivada(x,y);
+q = -1./(A(x)).*dy;
+q_ant = q(end);
+
+pasos = pasos*2;
+[x y] = dif_fin_rob(f,inter,ycd,rob,pasos);
+dy = aproximar_derivada(x,y);
+q = -1./(A(x)).*dy;
+q= q(end);
+
+error_B = abs(q- q_ant)/abs(q)
 
 %el flujo especifico:
-q = -1./(A(x)).*dy;
 q(end)
 %resultado:
-%5.5871e-2
+%5.58726e-2
 
 %ITEM C ------------
 p=@(x) f(x)(:,1);

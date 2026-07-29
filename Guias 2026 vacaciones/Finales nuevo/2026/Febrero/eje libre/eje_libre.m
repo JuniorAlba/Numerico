@@ -31,7 +31,7 @@ w_plot = linspace(0,2,1000);
 plot(w_plot, A(w_plot), 'b', 'LineWidth',2);
 hold on;
 %esta entre 0 y 1
-[p,h,it] = biseccion(dA,0,1,1000,5e-8);
+[p,h,it] = biseccion(dA,0,1,1000,0.5e-8);
 p
 A(p)
 dA(p)
