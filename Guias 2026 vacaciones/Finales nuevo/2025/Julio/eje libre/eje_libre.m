@@ -16,12 +16,18 @@ z_interp = linspace(z_tabla(1),z_tabla(end),1000);
 figure(1)
 plot(z_interp,dT(z_interp))
 
+
+%LA TABLA ESTA EN METROS PERO LOS RESULTADOS LOS PIDE EN CENTIMETROS
+%TIPAZO
+
+
 %item A -----------------------
 
 [p,h,it] = biseccion(ddT,1,1.5,10000,5e-5);
 p
 %result
 %1.2314
+%100*1.2314 = 123.14
 
 
 %item B-------------------
@@ -32,4 +38,6 @@ T(p)
 %item C------------------
 flujo_interfaz = -0.02*dT(p)
 %result
-%1.4663
+%1.466
+%1.466/100=0.01466
+
